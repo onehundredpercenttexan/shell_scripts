@@ -1,6 +1,4 @@
 #!/bin/bash
 
-ls | while read -r FILE
-do
-    mv -v "$FILE" `echo $FILE | tr ' ' '_' | tr -d '[{}(),\!]' | tr -d "\'" | tr '[A-Z]' '[a-z]' | sed 's/_-_/_/g'`
-done
+# removes everything except alpha-numeric characters from filenames
+rename -e 's/[^a-zA-Z0-9](?=.*\.|\ )//g' ./*
